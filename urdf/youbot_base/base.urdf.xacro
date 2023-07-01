@@ -41,6 +41,15 @@
 
   <xacro:macro name="youbot_base" params="name">
     <link name="${name}_footprint"/>
+    
+    <joint name="${name}_footprint_ground_joint" type="fixed">
+      <origin xyz="0 0 ${caster_offset_z-wheel_radius}" rpy="0 0 0"/>
+      <child link="${name}_ground_link"/>
+      <parent link="${name}_footprint"/>
+    </joint>
+
+    <link name="${name}_ground_link" />
+
 
     <joint name="${name}_footprint_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
